@@ -108,6 +108,10 @@ class SettingsScreen extends Component {
     this.props.navigation.navigate('AboutScreen');
   }
 
+  hotspotButtonPressed() {
+    this.props.navigation.navigate('HotspotScreen');
+  }
+
   chooseProviderScreenButtonPressed() {
     this.props.navigation.navigate('ChooseProviderScreen');
   }
@@ -264,6 +268,14 @@ class SettingsScreen extends Component {
 
           <View style={styles.mainContainer}>
             <View style={styles.section}>
+              {this.getSettingRow(
+                'Hotspot testing',
+                this.hotspotButtonPressed,
+                null,
+                null,
+                'Tests for hotspot logic',
+              )}
+              <View style={styles.divider} />
               {this.getSettingRow(
                 languages.t('label.choose_provider_title'),
                 this.chooseProviderScreenButtonPressed,

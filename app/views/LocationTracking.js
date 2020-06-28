@@ -51,6 +51,7 @@ import StateUnknown from './../assets/svgs/stateUnknown';
 import SettingsGear from './../assets/svgs/settingsGear';
 import fontFamily from '../constants/fonts';
 import { PARTICIPATE, CROSSED_PATHS } from '../constants/storage';
+import { enableHotspot, createHotspot } from '../services/HotspotService';
 
 const StateEnum = {
   UNKNOWN: 0,
@@ -221,6 +222,7 @@ class LocationTracking extends Component {
     // Fixes tripleblindmarket/private-kit#129
     BackgroundGeolocation.checkStatus(({ authorization }) => {
       if (authorization === BackgroundGeolocation.AUTHORIZED) {
+        enableHotspot();
         LocationServices.start();
         this.setState({
           isLogging: true,
